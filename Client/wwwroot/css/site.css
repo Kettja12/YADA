@@ -1,0 +1,86 @@
+﻿html{
+    height:100%;
+}
+body {
+    height: 98%;
+}
+#app{
+    height:100%
+}
+#alert {
+    position: absolute;
+    z-index: 999999;    
+    width: 98%;
+
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.centeredcontent {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+.b2 {
+    font-size: 2em;
+    font-weight: bold;
+}
+.block {
+    display: inline-block;
+}
+
+.w1 {
+    width: 1em;
+}
+
+.w2 {
+    width: 2em;
+}
+
+.w3 {
+    width: 3em;
+}
+
+.w4 {
+    width: 4em;
+}
+
+.w5 {
+    width: 5em;
+}
+
+.w6 {
+    width: 6em;
+}
+
+.w7 {
+    width: 7em;
+}
+
+.w8 {
+    width: 8em;
+}
+
+.w9 {
+    width: 9em;
+}
+
+.w10 {
+    width: 10em;
+}
+
+.w15 {
+    width: 15em;
+}
+
+.w20 {
+    width: 20em;
+}
+
+

@@ -1,0 +1,34 @@
+﻿@page "/Authentication/Login"
+<div class="centeredcontent">
+    <div class="w3-card-4">
+        <div class="w3-container w3-blue">
+            <h2>@L["User Login"]</h2>
+        </div>
+        <EditForm Model="User" OnValidSubmit=@HandleLoginAsync>
+            <div class="w3-container">
+                <DataAnnotationsValidator />
+                <ValidationSummary />
+
+                <div>
+                    <label for="username">@L["Username"]</label>
+                    <InputText Id="username"
+                               class="w3-input w3-border w3-round"
+                               @bind-Value="User.Username" />
+                    <ValidationMessage For="@(() => User.Username)" />
+                </div>
+                <div>
+                    <label for="password">@L["Password"]</label>
+                    <InputText Id="password" type="password"
+                               class="w3-input w3-border w3-round"
+                               @bind-Value="User.Password" />
+                    <ValidationMessage For="@(() => User.Password)" />
+                </div>
+                <p>
+                    <button type="submit" class="w3-button w3-blue">@L["Login"]</button>
+                </p>
+            </div>
+        </EditForm>
+    </div>
+</div>
+
+

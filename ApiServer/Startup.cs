@@ -2,14 +2,10 @@ using Entities;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Localization;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
 using Services;
 using Services.Datastore;
-using System.Collections.Generic;
-using System.Globalization;
 
 namespace Api
 {
@@ -30,31 +26,19 @@ namespace Api
             services.AddSingleton<DBSettings>(dbSettings);
             services.AddSingleton<RootService>();
             services.AddLocalization();
-            services.Configure<RequestLocalizationOptions>(
-                options =>
-                {
-                    var supportedCultures = new List<CultureInfo>
-                    {
-                        new CultureInfo("fi-FI"),
-                        new CultureInfo("en-US"),
-                        new CultureInfo("en-GB")
-                    };
-
-                    options.DefaultRequestCulture = new RequestCulture(culture: "fi-FI");
-                    options.SupportedCultures = supportedCultures;
-                    options.SupportedUICultures = supportedCultures;
-                });
+            services.AddCors(o => o.AddPolicy("policy", builder =>
+            {
+                builder.AllowAnyOrigin()
+                       .AllowAnyMethod()
+                       .AllowAnyHeader();
+            }));
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-            }
-
+            app.UseCors("policy");
+            app.UseHttpsRedirection();
             app.UseRouting();
-
 
             app.UseEndpoints(endpoints =>
             {

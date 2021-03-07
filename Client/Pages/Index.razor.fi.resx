@@ -117,13 +117,19 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="ServicesInitResponse" xml:space="preserve">
-    <value>Services here. How I can help you</value>
+  <data name="Logout" xml:space="preserve">
+    <value>Kirjaudu ulos</value>
   </data>
-  <data name="ServicesInvalidCall" xml:space="preserve">
-    <value>Invalid call</value>
+  <data name="Own information" xml:space="preserve">
+    <value>Omat tiedot</value>
   </data>
-  <data name="ServicesLiveResponse" xml:space="preserve">
-    <value>I am live</value>
+  <data name="Return" xml:space="preserve">
+    <value>Palaa</value>
+  </data>
+  <data name="Select action" xml:space="preserve">
+    <value>Valitse toiminto</value>
+  </data>
+  <data name="Users" xml:space="preserve">
+    <value>Käyttäjät</value>
   </data>
 </root>

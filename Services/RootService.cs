@@ -24,31 +24,21 @@ namespace Services
             this.dbSettings = dbSettings;
             this.localizer = localizer;
         }
-        public Task<Response> Get() => Task.FromResult(new Response(ResponseStatus.OK.ToString(), localizer["ServicesInitResponse"]));
+        public Task<Response> Get() => Task.FromResult(new Response(ResponseStatus.OK.ToString(), localizer["Services here. How I can help You"]));
 
         public async Task<Response> Post(ParametersIn request)
         {
             try
             {
-                MethodInfo mInfo = typeof(ServiceFactory).GetMethod(request.Service);
-                if (mInfo != null)
-                {
-                    var sf = new ServiceFactory(logger, dbSettings, localizer);
-                    var result = (Task<Response>)mInfo.Invoke(sf, new object[] { request });
-                    return await result;
-                }
-                else
-                {
-                    if (request.Service == "Live")
-                        return await Task.FromResult(
-                            new Response(ResponseStatus.OK.ToString(),localizer["ServicesLiveResponse"]));
-                }
-                return await Task.FromResult(new Response(ResponseStatus.FAIL.ToString(),localizer[ "ServicesInvalidCall"]));
+                var di = new ServiceParameters(logger, dbSettings, localizer);
+                var sf = new ServiceFactory(di);
+                var result = sf.Run(request);
+                return await result;
             }
             catch (Exception e)
             {
                 logger.LogError(e.Message);
-                return await Task.FromResult(new Response(ResponseStatus.FAIL.ToString(), localizer["ServicesInvalidCall"]));
+                return await Task.FromResult(new Response(ResponseStatus.FAIL.ToString(), localizer["Invalid service call"]));
             }
         }
 

@@ -1,0 +1,41 @@
+﻿@page "/"
+
+<div class="centeredcontent">
+    <div class="w3-card-4">
+        <div class="w3-container w3-blue">
+            <h3>@L["Select action"]</h3>
+        </div>
+        <div class="w3-container">
+            <p>
+                <button id="reservation" class="w3-button w3-blue w3-block w3-round"
+                        @onclick='()=>NavigationManager.NavigateTo(StateContainer.PushPage("/Maintenance/Users"))'>
+                    @L["Users"]    
+                </button>
+            </p>
+            <p>
+                <button id="reservation" class="w3-button w3-blue w3-block w3-round"
+                        @onclick='()=>NavigationManager.NavigateTo(StateContainer.PushPage("/Authentication/OwnInformation"))'>
+                    @L["Own information"]    
+                </button>
+            </p>
+
+            <p>
+                <button id="logout" class="w3-button w3-blue w3-block w3-round"
+                        @onclick='()=>NavigationManager.NavigateTo(StateContainer.PushPage("/Authentication/Login"))'>
+                    @L["Logout"]  
+                </button>
+            </p>
+
+        </div>
+    </div>
+</div>
+
+
+
+<ul>
+    @*<li><h2>@L["Select action"]</h2> </li>
+        <li><button @onclick="()=>Mainlayout.LoadControlAsync(Enums.ActiveControl.Customers)">@L["Customers"]</button> </li>
+        <li><button @onclick="()=>Mainlayout.LoadControlAsync(Enums.ActiveControl.User)">@L["Own information"]</button> </li>
+        <li><button @onclick="()=>Mainlayout.LoadControlAsync(Enums.ActiveControl.login)">@L["Logout"]</button> </li>*@
+</ul>
+
